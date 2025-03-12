@@ -17,20 +17,20 @@ jobs:
         with: 
           python-version: '3.9'
           
-      # - name: Install dependencies
-      #   run: |
-      #     python -m venv venv
-      #     source venv/bin/activate
-      #     pip install --upgrade pip
-      #     pip3 install Flask
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip3 install Flask
 
-      # - name: run test
-      #   run:
-      #     source venv/bin/activate
-      #     pytest 
+      - name: run test
+        run:
+          source venv/bin/activate
+          pytest 
 
       - name: Build application
-        run: python application.py sdist bdist_wheel
+        run: python setup.py sdist bdist_wheel
 
       - name: path
         run: mkdir staging && cp dist/*.whl staging
