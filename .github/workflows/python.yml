@@ -33,7 +33,7 @@ jobs:
         run: python -m build
 
       - name: path
-        run: mkdir staging && cp target/*.whl staging
+        run: mkdir staging && cp dist/*.whl staging
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.6.1
