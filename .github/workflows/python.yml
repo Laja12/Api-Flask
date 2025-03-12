@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: window-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout repo from the scm
         uses: actions/checkout@v4.2.2
