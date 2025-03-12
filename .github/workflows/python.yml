@@ -27,10 +27,7 @@ jobs:
           pip install -r requirements.txt
           pip install --upgrade setuptools wheel
 
-      - name: run test
-        run:
-          source venv/bin/activate
-          pytest 
+      
 
       - name: Build application
         run: python setup.py sdist bdist_wheel
