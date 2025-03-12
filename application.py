@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, redirect
+# from flask import Flask, jsonify, redirect
 from flask_restful import Api, MethodNotAllowed, NotFound
 from flask_cors import CORS
 from util.common import domain, port, prefix, build_swagger_config_json
