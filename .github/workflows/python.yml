@@ -23,7 +23,11 @@ jobs:
           source venv/bin/activate
           pip install --upgrade pip
           pip install flask
-          
+
+      - name: run test
+        run:
+          source venv/bin/activate
+          pytest 
 
       - name: Build application
         run: python application.py sdist bdist_wheel
