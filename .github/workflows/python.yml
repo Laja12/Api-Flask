@@ -1,0 +1,29 @@
+name: continous integration of python application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo from the scm
+        uses: actions/checkout@v4.2.2
+        
+      - name: set up python
+        uses: actions/setup-python@v5.4.0
+
+      - name: Build application
+        run: python setup.py sdist bdist_wheel
+
+      - name: path
+        run: mkdir staging && cp target/*.whl staging
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.6.1
+        with:
+           name: Package
+           path: staging 
+    
