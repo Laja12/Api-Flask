@@ -30,7 +30,7 @@ jobs:
           pytest 
 
       - name: Build application
-        run: python application.py sdist bdist_wheel
+        run: python -m build
 
       - name: path
         run: mkdir staging && cp target/*.whl staging
