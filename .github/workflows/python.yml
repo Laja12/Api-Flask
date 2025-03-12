@@ -22,7 +22,7 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           pip install --upgrade pip
-          pip3 install Flask
+          pip install -r requirements.txt
 
       - name: run test
         run:
@@ -30,7 +30,7 @@ jobs:
           pytest 
 
       - name: Build application
-        run: python setup.py sdist bdist_wheel
+        run: python application.py sdist bdist_wheel
 
       - name: path
         run: mkdir staging && cp dist/*.whl staging
