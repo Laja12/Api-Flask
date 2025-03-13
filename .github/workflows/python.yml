@@ -1,45 +1,76 @@
-name: continous integration of python application
-
+name: CI with Python setup for Application
+ 
 on:
+
   push:
+
     branches:
+
       - main
 
-  workflow_dispatch:
+  pull_request:
 
+    branches:
+
+      - main
+ 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
+ 
     steps:
-      - name: Checkout repo from the scm
+
+      - name: Checkout code
+
         uses: actions/checkout@v4.2.2
-        
-      - name: set up python
+ 
+      - name: Set up Python 3.9
+
         uses: actions/setup-python@v4.5.0
-        with: 
+
+        with:
+
           python-version: '3.9'
-          
+ 
       - name: Install dependencies
+
         run: |
+
           python -m venv venv
+
           source venv/bin/activate
+
           pip install --upgrade pip
+
           pip install -r requirements.txt
+
           pip install wheel
  
+      - name: Run tests
 
-      
+        run: |
 
-      - name: Build application
-        run: | 
           source venv/bin/activate
+
+          pytest tests/test_main.py
+ 
+      - name: Build package
+
+        run: |
+
+          source venv/bin/activate
+
           python setup.py sdist bdist_wheel
+ 
+      - name: Upload Build Artifact
 
-      
-
-      - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.6.1
+
         with:
-           name: Package
-           path: dist/
-    
+
+          name: my-python-app-package
+
+          path: dist/
+ 
