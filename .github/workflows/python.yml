@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repo from the scm
         uses: actions/checkout@v4.2.2
@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m venv venv
-          # source venv/bin/activate
+          source venv/bin/activate
           pip install --upgrade pip
           pip install -r requirements.txt
           pip install wheel
