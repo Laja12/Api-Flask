@@ -32,12 +32,11 @@ jobs:
       - name: Build application
         run: pip install wheel
 
-      - name: path
-        run: mkdir staging && venv/lib/python3.9/site-packages staging
+      
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.6.1
         with:
            name: Package
-           path: staging 
+           path: dist/*.whl
     
