@@ -22,15 +22,18 @@ jobs:
       - name: Install dependencies
         run: |
           python -m venv venv
-          # source venv/bin/activate
+          source venv/bin/activate
           pip install --upgrade pip
           pip install -r requirements.txt
-          pip install --upgrade setuptools wheel
+          pip install wheel
+ 
 
       
 
       - name: Build application
-        run: pip install wheel
+        run: | 
+          source venv/bin/activate
+          python setup.py sdist bdist_wheel
 
       
 
@@ -38,5 +41,5 @@ jobs:
         uses: actions/upload-artifact@v4.6.1
         with:
            name: Package
-           path: dist/*.whl
+           path: dist/
     
